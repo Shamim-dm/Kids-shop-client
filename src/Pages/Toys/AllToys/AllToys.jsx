@@ -1,11 +1,10 @@
 import React from "react";
-import Navbar from "../../Sheared/Navbar/Navbar";
-import Footer from "../../Sheared/Footer/Footer";
+
 
 const AllToys = () => {
   return (
     <div>
-      <Navbar></Navbar>
+     
 
       <div className="grid md:grid-cols-2  justify-center gap-2 my-11">
         <div className=" mt-6">
@@ -182,7 +181,6 @@ const AllToys = () => {
         </div>
       </div>
 
-      <Footer></Footer>
     </div>
   );
 };
