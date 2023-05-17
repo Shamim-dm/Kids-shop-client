@@ -33,7 +33,8 @@ const Navbar = () => {
                             <li><ActiveLink to='/about'>About</ActiveLink></li>
                         </ul>
                     </div>
-                    <a className=" font-bold normal-case text-xl  md:text-3xl">F<span className='text-red-500'>oo</span>dB<span className='text-sky-600'>u</span>zz</a>
+                    <img className="w-16 h-12 mr-2" src="https://w7.pngwing.com/pngs/425/792/png-transparent-model-car-toy-toys-child-photography-truck-thumbnail.png" alt="" />
+                    <a className=" font-bold normal-case text-xl  md:text-3xl">T<span className='text-red-500'>oy</span>s <span className='text-sky-600'>Veh</span>ic<span className='text-red-800'>les</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 ">
