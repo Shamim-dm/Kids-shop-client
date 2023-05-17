@@ -4,10 +4,13 @@ const Banner = () => {
   return (
     <div>
       <div className="carousel w-full">
-        <div id="slide1" className="carousel-item relative w-full">
+        <div
+          id="slide1"
+          className="carousel-item relative w-full md:h-64 lg:h-[600px]"
+        >
           <img
-            src="https://i.ibb.co/JBC5Xx1/banner-2.jpg"
-            className="w-full"
+            src="https://i.ibb.co/3mwqP6z/Mommy-Jag-Banner-BT-Backline2.jpg"
+            className="w-full md:h-64 lg:h-[600px]"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide4" className="btn btn-circle">
@@ -18,10 +21,13 @@ const Banner = () => {
             </a>
           </div>
         </div>
-        <div id="slide2" className="carousel-item relative w-full">
+        <div
+          id="slide2"
+          className="carousel-item relative w-full md:h-64 lg:h-[600px]"
+        >
           <img
-            src="/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
-            className="w-full"
+            src="https://i.ibb.co/QMJLqyS/banner-02-2000x.webp"
+            className="w-full md:h-64 lg:h-[600px] "
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide1" className="btn btn-circle">
@@ -32,10 +38,13 @@ const Banner = () => {
             </a>
           </div>
         </div>
-        <div id="slide3" className="carousel-item relative w-full">
+        <div
+          id="slide3"
+          className="carousel-item relative w-full md:h-64  lg:h-[600px]"
+        >
           <img
-            src="/images/stock/photo-1414694762283-acccc27bca85.jpg"
-            className="w-full"
+           src="https://i.ibb.co/Y21kjNb/sol-73909-hotwheels-plp-banner-sm-203256.jpg"
+            className="w-full md:h-64  lg:h-[600px]"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide2" className="btn btn-circle">
@@ -46,10 +55,13 @@ const Banner = () => {
             </a>
           </div>
         </div>
-        <div id="slide4" className="carousel-item relative w-full">
+        <div
+          id="slide4"
+          className="carousel-item relative w-full md:h-64  lg:h-[600px]"
+        >
           <img
-            src="/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
-            className="w-full"
+            src="https://i.ibb.co/JBC5Xx1/banner-2.jpg"
+            className="w-full md:h-64  lg:h-[600px]"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide3" className="btn btn-circle">
