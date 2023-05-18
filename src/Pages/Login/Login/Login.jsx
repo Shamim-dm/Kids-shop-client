@@ -1,94 +1,141 @@
-import React, { useContext, useState, } from 'react';
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { AuthContext } from '../../../provider/AuthProviders';
-import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from "../../../provider/AuthProviders";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
-    const {signIn, googleLogin, githubLogin} = useContext(AuthContext) || '';
-   const [error, setError] = useState('')
+  const { signIn, googleLogin, githubLogin } = useContext(AuthContext) || "";
+  const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log('login page location', location)
+  const from = location.state?.from?.pathname || "/";
 
-    const navigate = useNavigate();
-    const location = useLocation();
-    // console.log('login page location', location)
-    const from = location.state?.from?.pathname || '/'
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        
-        if( password.length < 6){
-            toast.error("Please type Atlest 6 charecter")
-        }
-        // console.log(email, password)
-
-
-    
-      
-        signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from, {replace: true})
-            toast.success("Login successful!")
-            setError('')
-            
-           
-        })
-        .catch(error => {
-            setError('No Match Email or Password')
-        toast.error("Please type valid Email and Password !!")
-        })
-        
-        
-      
+    if (password.length < 6) {
+      toast.error("Please type Atlest 6 charecter");
     }
-    const handleGoogleSignIn = () => {
-        googleLogin()
-       
-        
-    }
-    const handleGithubSignIn = () => {
-        githubLogin()
-    }
+    // console.log(email, password)
 
-    return (
-        <div className='container mx-auto bg-slate-300 rounded-lg py-2'>
-            <h3 className=' w-80 py-2 mt-2 mx-auto text-purple-100 font-bold text-lg rounded-lg bg-purple-900 text-center'>Please Login</h3>
-            <form onSubmit={handleLogin}  className="form-control w-full max-w-xs mx-auto">
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+        toast.success("Login successful!");
+        setError("");
+      })
+      .catch((error) => {
+        setError("No Match Email or Password");
+        toast.error("Please type valid Email and Password !!");
+      });
+  };
+  const handleGoogleSignIn = () => {
+    googleLogin();
+  };
+  const handleGithubSignIn = () => {
+    githubLogin();
+  };
 
-                <label className="label">
-                    <span className="label-text font-bold">What is your Email ?</span>
+  return (
+    <div>
+      <div className="form-containers bg-cyan-950">
+        <div className="w-10/12 md:w-4/12 grid items-center rounded-lg align-middle mx-auto min-h-screen ">
+          <div className="">
+            <div className=" rounded-lg shadow-2xl bg-slate-900">
+              <div className="card-body text-white ">
+                <h2 className="text-center font-bold text-sky-400 text-4xl">
+                  Please Login
+                </h2>
+                <form onSubmit={handleLogin}>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="email"
+                      className="input input-bordered text-black"
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="">Password</span>
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="password"
+                      className="input input-bordered text-black"
+                    />
+                    <label className="label">
+                      <p href="#" className="text-white ">
+                        Forgot password?
+                      </p>
+                    </label>
+                  </div>
 
-                </label>
-                <input type="email" name='email' placeholder="Type here" required className="input input-bordered w-full max-w-xs" />
+                  <p className="text-red-500"> {error}</p>
 
-                <label className="label">
-                    <span className="label-text font-bold">What is your Password?</span>
+                  <div className="form-control mt-2">
+                    <button className="btn btn-primary">Login</button>
+                  </div>
+                </form>
 
-                </label>
-                <input type="password"  name='password' placeholder="Type here" required className="input input-bordered w-full max-w-xs" />
+                {/* social login start from her */}
+                <div className="text-center mt-4 ">
+                  <p>Or log in using</p>
+                </div>
 
-                 <p className='text-red-500'> {error}</p>
+                <div className="divider text-white">
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn btn-circle"
+                  >
+                    <img
+                      className="btn-circle h-6 w-6"
+                      src="https://e7.pngegg.com/pngimages/882/225/png-clipart-google-logo-google-logo-google-search-icon-google-text-logo.png"
+                      alt=""
+                    />
+                  </button>
 
-                <button className='btn btn-accent mt-2' type='submit'>Login</button>
-
-                <p>Don't have an account <span> <Link className='link link-primary' to="/register">Registration</Link></span></p>
-                <p onClick={handleGoogleSignIn} className='btn btn-error w-80 py-2 mt-2 mx-auto text-center'>
-                 
-                </p>
-                <p onClick={handleGithubSignIn} className='btn bg-black w-80 py-2 mt-2 mx-auto text-center'>
-               
-                Login With GitHub 
-            </p>
-            </form>
-
+                  <button
+                    onClick={handleGithubSignIn}
+                    className="btn btn-circle"
+                  >
+                    <img
+                      className="btn-circle h-6 w-6"
+                      src="https://w7.pngwing.com/pngs/670/396/png-transparent-computer-icons-github-icon-design-logo-github-cat-like-mammal-carnivoran-logo-thumbnail.png"
+                      alt=""
+                    />
+                  </button>
+                </div>
+                <div className="text-center mt-2">
+                  <p>
+                    Don't have an account?{" "}
+                    <Link
+                      className="text-red-500 font-bold text-xl"
+                      to="/register"
+                    >
+                      <button>Sign up</button>
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Login;

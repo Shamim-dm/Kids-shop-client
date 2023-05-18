@@ -145,9 +145,7 @@ const AllToys = () => {
         </div>
       </div>
 
-      {/* Put this part before </body> tag */}
-
-      {/* Put this part before </body> tag */}
+     
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box w-11/12 max-w-5xl">

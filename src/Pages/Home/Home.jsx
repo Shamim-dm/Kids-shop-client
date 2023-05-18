@@ -14,9 +14,9 @@ const Home = () => {
   const [toys, setToys] = useState([]);
   const [product, setProduct] = useState([]);
 
-  const  populerHandleTabs = (toyes)=>{
-    setToys(toyes)
-  }
+  const populerHandleTabs = (toyes) => {
+    setToys(toyes);
+  };
 
   const carHandleTabs = (id) => {
     const sort = toyes.filter((toy) => toy.category == "cars");
@@ -51,20 +51,20 @@ const Home = () => {
       </h2>
       <hr />
 
-<p className="text-2xl my-3 font-bold">Cetagory by toys:</p>
+      <p className="text-2xl my-3 font-bold">Cetagory by toys:</p>
       <Tabs>
         <TabList>
-          <Tab  onClick={() => populerHandleTabs(toyes)}>Populer</Tab>
+          <Tab onClick={() => populerHandleTabs(toyes)}> Populer</Tab>
 
-          <Tab onClick={() => carHandleTabs(toyes)}>Cars Toys</Tab>
+          <Tab onClick={() => carHandleTabs(toyes)}> Cars Toys</Tab>
 
-          <Tab onClick={() => truckHandleTabs(toyes)}>Trucks Toys</Tab>
-          <Tab onClick={() => helicopterHandleTabs(toyes)}>Helicopter Toys</Tab>
+          <Tab onClick={() => truckHandleTabs(toyes)}> Trucks Toys</Tab>
+          <Tab onClick={() => helicopterHandleTabs(toyes)}> Helicopter Toys</Tab>
         </TabList>
 
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
-            {toys.map((toy) => (
+            {toys.map(toy => (
               <ToyCollections toy={toy} key={toy._id}></ToyCollections>
             ))}
           </div>
@@ -72,7 +72,7 @@ const Home = () => {
 
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
-            {toys.map((toy) => (
+            {toys.map(toy => (
               <ToyCollections toy={toy} key={toy._id}></ToyCollections>
             ))}
           </div>
@@ -80,7 +80,7 @@ const Home = () => {
 
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
-            {toys.map((toy) => (
+            {toys.map(toy => (
               <ToyCollections toy={toy} key={toy._id}></ToyCollections>
             ))}
           </div>
@@ -88,7 +88,7 @@ const Home = () => {
 
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
-            {toys.map((toy) => (
+            {toys.map(toy => (
               <ToyCollections toy={toy} key={toy._id}></ToyCollections>
             ))}
           </div>
