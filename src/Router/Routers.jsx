@@ -3,8 +3,9 @@ import Main from "../Layout/Main";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import ToyDetails from "../Pages/Home/Home/ToyDetails/ToyDetails";
-import Login from "../Pages/Login/Login";
-import Register from "../Pages/Login/Register";
+import Login from "../Pages/Login/Login/Login";
+import Register from "../Pages/Login/Register/Register";
+
 import AddToys from "../Pages/Toys/AddToys/AddToys";
 import AllToys from "../Pages/Toys/AllToys/AllToys";
 import MyToys from "../Pages/Toys/MyToys/MyToys";

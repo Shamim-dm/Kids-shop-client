@@ -4,15 +4,26 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// console.log('environment', import.meta.env.VITE_apiKey)
+// const firebaseConfig = {
+//   apiKey: import.meta.env.VITE_apiKey,
+//   authDomain: import.meta.env.VITE_authDomain,
+//   projectId: import.meta.env.VITE_projectId,
+//   storageBucket: import.meta.env.VITE_storageBucket,
+//   messagingSenderId: import.meta.env.VITE_messagingSenderId,
+//   appId: import.meta.env.VITE_appId
+// };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDapPmo3szsUfcpxH8y8frWYMd0UvmJY1k",
-  authDomain: "toy-vehicles.firebaseapp.com",
-  projectId: "toy-vehicles",
-  storageBucket: "toy-vehicles.appspot.com",
-  messagingSenderId: "817335793802",
-  appId: "1:817335793802:web:ae763a807ba5251d201573"
+  apiKey:  import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 export default app;
