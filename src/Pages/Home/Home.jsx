@@ -37,7 +37,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://toy-vehicles-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -46,7 +46,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
 
-      <h2 className="text-5xl text-center font-bold text-red-800 mt-11 mb-2">
+      <h2 className="text-3xl md:text-5xl text-center font-bold text-red-800 mt-11 mb-2">
         Best Toys for Baby & Kids Collections
       </h2>
       <hr />

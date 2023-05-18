@@ -2,6 +2,7 @@ import React from "react";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import { Link } from "react-router-dom";
 
 const ToyCollections = ({ toy }) => {
   const { _Id, toy_name, price, image, rating } = toy;
@@ -27,7 +28,7 @@ const ToyCollections = ({ toy }) => {
           {rating}
         </p>
 
-        <button className="btn ">View Details</button>
+       <Link to='ToyDetails' > <button className="btn ">View Details</button></Link>
       </div>
 
       <hr />

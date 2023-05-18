@@ -14,13 +14,13 @@ const Navbar = () => {
   // }
   return (
     <div className="   py-3 px-2">
-      <div className="navbar rounded-2xl bg-slate-600">
+      <div className="navbar rounded-2xl bg-sky-900">
         <div className="navbar-start">
           <div className="dropdown font-bold">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-5 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -35,7 +35,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 "
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 text-white bg-slate-900   "
             >
               <li>
                 <ActiveLink to="/">Home</ActiveLink>
@@ -69,8 +69,8 @@ const Navbar = () => {
             <span className="text-red-800">les</span>
           </a>
         </div>
-        <div className="navbar-center hidden text-white lg:flex">
-          <ul className="menu menu-horizontal px-1  ">
+        <div className="navbar-center hidden text-white lg:flex ">
+          <ul className="menu menu-horizontal px-1">
             <li>
               <ActiveLink to="/">Home</ActiveLink>
             </li>
@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-2">
-          <div className="form-control">
+          <div className="form-control  hidden lg:block">
             <input
               type="text"
               placeholder="Search"

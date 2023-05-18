@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
+import ToyDetails from "../Pages/Home/Home/ToyDetails/ToyDetails";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import AddToys from "../Pages/Toys/AddToys/AddToys";
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
-            loader: ()=> fetch('http://localhost:5000/products')
+            loader: ()=> fetch('https://toy-vehicles-server.vercel.app/products')
             
         },
         {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         {
             path:'myToys',
             element: <MyToys></MyToys>
+        },
+        {
+            path: 'ToyDetails',
+            element: <ToyDetails></ToyDetails>
         }
 
 

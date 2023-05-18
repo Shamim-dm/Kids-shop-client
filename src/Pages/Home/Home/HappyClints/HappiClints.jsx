@@ -3,7 +3,7 @@ import React from "react";
 const HappiClints = () => {
   return (
     <div className="my-11">
-      <h2 className="text-center text-5xl font-bold text-sky-600 ">
+      <h2 className="text-center text-3xl  md:text-5xl font-bold text-sky-600 ">
         {" "}
         Our Team Members
       </h2>
@@ -46,8 +46,8 @@ const HappiClints = () => {
             src="https://media.istockphoto.com/id/1313463369/photo/financial-advisor-shaking-hands-with-customer.jpg?s=612x612&w=0&k=20&c=Y7UqvQ-uKklHrbxJNAvTlJmGFeiTg0HpDIboFD2kPxI="
             alt=""
           />
-          <h3 className="text-red-800 font-bold text-xl">Sells Manager</h3>
-          <p className="text-slate-500">Marketting Manager</p>
+          <h3 className="text-red-800 font-bold text-xl">Emada</h3>
+          <p className="text-slate-500">Sells Manager</p>
         </div>
 
         <div>

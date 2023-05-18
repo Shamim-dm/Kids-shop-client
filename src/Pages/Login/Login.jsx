@@ -1,7 +1,23 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 function Login() {
+
+  const {logIn} = useContext(AuthContext)
+
+
+
+  const loginhandle = event=>{
+    event.preventDefault()
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password)
+
+  }
+
   return (
     <>
       
@@ -12,12 +28,15 @@ function Login() {
 
               <div className="card-body text-white ">
                 <h2 className="text-center font-bold text-sky-400 text-4xl">Please Login</h2>
-                <div className="form-control">
+               <form onSubmit={loginhandle}>
+
+               <div className="form-control">
                   <label className="label">
                     <span className="">Email</span>
                   </label>
                   <input
                     type="email"
+                    name="email"
                     placeholder="email"
                     className="input input-bordered"
                   />
@@ -28,6 +47,7 @@ function Login() {
                   </label>
                   <input
                     type="password"
+                    name="password"
                     placeholder="password"
                     className="input input-bordered"
                   />
@@ -40,6 +60,8 @@ function Login() {
                 <div className="form-control mt-2">
                   <button className="btn btn-primary">Login</button>
                 </div>
+
+               </form>
 
                 {/* social login start from her */}
                 <div className="text-center mt-4 ">
