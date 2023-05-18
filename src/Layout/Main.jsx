@@ -6,7 +6,7 @@ import Footer from '../Pages/Sheared/Footer/Footer';
 
 const Main = () => {
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className='w-10/12 mx-auto '>
             <Navbar></Navbar>
             
             <Outlet></Outlet>

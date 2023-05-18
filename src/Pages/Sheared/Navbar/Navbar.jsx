@@ -14,9 +14,9 @@ const Navbar = () => {
   // }
   return (
     <div className="   py-3 px-2">
-      <div className="navbar rounded-2xl ">
+      <div className="navbar rounded-2xl bg-slate-600">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown font-bold">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ const Navbar = () => {
             <span className="text-red-800">les</span>
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden text-white lg:flex">
           <ul className="menu menu-horizontal px-1  ">
             <li>
               <ActiveLink to="/">Home</ActiveLink>
@@ -92,6 +92,13 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-2">
+          <div className="form-control">
+            <input
+              type="text"
+              placeholder="Search"
+              className="input input-bordered"
+            />
+          </div>
           {/* {
                         user && <img className='w-12 h-12 c rounded-full' src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' />
                     }
