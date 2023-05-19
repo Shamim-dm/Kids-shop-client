@@ -10,6 +10,8 @@ const ChoiseShop = () => {
       <h2 className=" uppercase text-3xl md:text-6xl text-red-800 font-bold text-center">
         Why choise us?
       </h2>
+      <p className="text-center">Here are some reasons why in choosing us you will have made the best decision for you and your shopping.</p>
+      <hr className="mb-6 lg:mb-1" />
 
       <div className="grid md:grid-cols-3 gap-5 items-center justify-center ">
         <div

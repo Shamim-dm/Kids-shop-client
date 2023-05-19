@@ -7,6 +7,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import HappiClints from "./Home/HappyClints/HappiClints";
 import ChoiseShop from "./Home/ChoiseShop/ChoiseShop";
+import ToyGallery from "./Home/ToyGallery/ToyGallery";
+import Marquee from "react-fast-marquee";
 
 const Home = () => {
   const toyes = useLoaderData();
@@ -46,6 +48,12 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
+
+     <Marquee speed={100} className="flex gap-11">
+   {
+      toys.map(toy => <ToyGallery toy={toy} key={toy._id} ></ToyGallery>)
+    }
+   </Marquee> 
 
       <h2 className="text-3xl md:text-5xl text-center font-bold text-red-800 mt-11 mb-2">
         Best Toys for Baby & Kids Collections
@@ -96,7 +104,7 @@ const Home = () => {
           
         </TabPanel>
       </Tabs>
-      
+
       <ChoiseShop></ChoiseShop>
       <HappiClints></HappiClints>
     </div>
