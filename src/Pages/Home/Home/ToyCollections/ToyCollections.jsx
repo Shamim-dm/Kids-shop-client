@@ -2,21 +2,26 @@ import React from "react";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 AOS.init();
 
 const ToyCollections = ({ toy }) => {
-  const { _Id, toy_name, price, image, rating } = toy;
-//   console.log(toy);
+  const { _id, toy_name, price, image, rating } = toy;
+
+const handleDetails = id =>{
+  console.log(id)
+
+}
 
   return (
-    <div data-aos="fade-right" className="  mx-auto my-8 space-y-3">
+    <div data-aos="fade-right" className="">
       <div>
         <img className="w-48 h-52" src={image} alt="" />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-2 h-56 relative">
         <h2>
           <span className="font-bold text-xl ">Toy Name:</span>{" "}
           <span className="text-slate-500">{toy_name}</span>
@@ -31,10 +36,44 @@ const ToyCollections = ({ toy }) => {
           {rating}
         </p>
 
-       <Link to='ToyDetails' > <button className="btn ">View Details</button></Link>
+       
+       <Link to={`ToyDetails/${_id}`} > <button  className="btn  absolute bottom-0 ">View Details</button></Link>
+     
+     
+
       </div>
 
       <hr />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     </div>
   );
 };

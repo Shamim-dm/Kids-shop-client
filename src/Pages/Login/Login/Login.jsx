@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import toast from 'react-hot-toast';
 import { AuthContext } from "../../../provider/AuthProviders";
-import toast, { Toaster } from "react-hot-toast";
+
 
 const Login = () => {
   const { signIn, googleLogin, githubLogin } = useContext(AuthContext) || "";
@@ -39,9 +39,13 @@ const Login = () => {
   };
   const handleGoogleSignIn = () => {
     googleLogin();
+   
+   
   };
   const handleGithubSignIn = () => {
     githubLogin();
+    
+   
   };
 
   return (

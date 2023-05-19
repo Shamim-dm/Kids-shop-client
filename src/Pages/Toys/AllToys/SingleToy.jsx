@@ -6,33 +6,34 @@ AOS.init();
 
 
 const SingleToy = ({ toy, toydetails }) => {
-  const { _id, image, toy_name, category, price } = toy;
+  // console.log(toy)
+  const { _id, image, toy_name, category, price, quantity, seller_name} = toy;
 
 
 
   return (
     <div   data-aos="fade-up"
     data-aos-duration="3000" className=" mt-6">
-      <div className="md:flex gap-4">
+      <div className="md:flex  items-center gap-4">
         <div>
-          <img className="h-36" src={image} alt="" />
+          <img className="h-36 w-44" src={image} alt="" />
         </div>
 
         <div className="space-y-1">
           <h2 className="text-red-800 font-bold">
-            Toy: <span> {toy_name}</span>
+            Toy: <span className="text-sky-800"> {toy_name}</span>
           </h2>
           <h3 className="text-red-800 font-bold">
-            Seller: <span></span>
+            Seller: <span>{seller_name}</span>
           </h3>
           <p className="text-red-800 font-bold">
             Price: $ <span> {price} </span>
           </p>
           <p className="text-red-800 font-bold">
-            Sub Category: <span> {category}</span>
+            Category: <span> {category}</span>
           </p>
           <p className="text-red-800 font-bold">
-            Available Quantity: <span></span>
+            Available Quantity: <span className="">{quantity} items</span>
           </p>
           <label
             onClick={() => toydetails(_id)}

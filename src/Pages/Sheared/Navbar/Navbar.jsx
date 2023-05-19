@@ -1,26 +1,26 @@
 // import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import ActiveLink from "../ActiveLink/ActiveLink";
-// import { AuthContext } from '../../../provider/AuthProviders';
+import { AuthContext } from "../../../provider/AuthProviders";
+import { useContext } from "react";
 
-// import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
-  // const { user, logOut } = useContext(AuthContext)
-  // const handleLogout = () => {
-  //     logOut()
-  //         .then()
-  //         .catch(error => console.log(error));
-  // }
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="   py-3 px-2">
-      <div className="navbar rounded-2xl bg-sky-900">
+      <div className="navbar rounded-2xl ">
         <div className="navbar-start">
           <div className="dropdown font-bold">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
+                className="h-8 w-8 "
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -56,6 +56,17 @@ const Navbar = () => {
               <li>
                 <ActiveLink to="/blogs">Blogs</ActiveLink>
               </li>
+              <li>
+              {user ? (
+            <Link onClick={handleLogout} className="btn text-xs bg-purple-900">
+              LogOut
+            </Link>
+          ) : (
+            <Link to="/login" className="btn ">
+              Login
+            </Link>
+          )}
+              </li>
             </ul>
           </div>
           <img
@@ -63,13 +74,10 @@ const Navbar = () => {
             src="https://w7.pngwing.com/pngs/425/792/png-transparent-model-car-toy-toys-child-photography-truck-thumbnail.png"
             alt=""
           />
-          <a className=" font-bold normal-case text-xl  md:text-3xl">
-            T<span className="text-red-500">oy</span>s{" "}
-            <span className="text-sky-600">Veh</span>ic
-            <span className="text-red-800">les</span>
-          </a>
+      
+          <h2 className="text-xl md:text-3xl font-bold">KidZone</h2>
         </div>
-        <div className="navbar-center hidden text-white lg:flex ">
+        <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1">
             <li>
               <ActiveLink to="/">Home</ActiveLink>
@@ -99,15 +107,25 @@ const Navbar = () => {
               className="input input-bordered"
             />
           </div>
-          {/* {
-                        user && <img className='w-12 h-12 c rounded-full' src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' />
-                    }
-                    {user ? <Link onClick={handleLogout} className="btn text-xs  bg-purple-900">Logout</Link> :
-                        <Link to='/login' className="btn">Login</Link>} */}
 
-          <Link to="/login" className="btn btn-primary">
-            Login
-          </Link>
+          {user && (
+            <img
+              className="w-12 h-12 c rounded-full"
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+            />
+          )}
+
+          {user ? (
+            <Link onClick={handleLogout} className="btn text-xs hidden  md:grid  bg-purple-900">
+              LogOut
+            </Link>
+          ) : (
+            <Link to="/login" className="btn hidden md:grid">
+              Login
+            </Link>
+          )}
+
+
         </div>
       </div>
     </div>

@@ -1,22 +1,11 @@
 import React from "react";
 
-import Marquee from "react-fast-marquee";
-
 const ToyGallery = ({ toy }) => {
-  console.log(toy);
+  //   console.log(toy);
   return (
-    
-     <div>
-  <img className="w-96" src={toy.image} alt="" />
-     </div>
-        
-   
-  
-   
-
-    
-     
-    
+    <div>
+      <img className="w-96 h-52." src={toy.image} alt="" />
+    </div>
   );
 };
 
