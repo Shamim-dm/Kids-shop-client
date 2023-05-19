@@ -46,7 +46,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetch("https://toy-vehicles-server.vercel.app/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -79,8 +79,7 @@ const Home = () => {
           <Tab onClick={() => carHandleTabs(toyes)}> Cars Toys</Tab>
 
           <Tab onClick={() => truckHandleTabs(toyes)}> Trucks Toys</Tab>
-          <Tab onClick={() => helicopterHandleTabs(toyes)}>
-            {" "}
+          <Tab onClick={() => helicopterHandleTabs(toyes)}>         
             Helicopter Toys
           </Tab>
           <Tab onClick={() => busHandleTabs(toyes)}> Bus Toys</Tab>

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleToy from "./SingleToy";
-
 import { Rating } from "@smastrom/react-rating";
-
 import "@smastrom/react-rating/style.css";
-import PreviousMap from "postcss/lib/previous-map";
+
 
 
 const AllToys = () => {
@@ -39,10 +37,6 @@ const AllToys = () => {
     for (const product of toyProduct) {
       console.log(product);
       setProducts(product);
-
-
-
-
 
 
     }

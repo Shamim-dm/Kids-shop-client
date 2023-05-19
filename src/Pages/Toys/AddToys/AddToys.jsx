@@ -1,55 +1,80 @@
 /* eslint-disable no-unused-vars */
 
-import React, { createContext, useContext } from "react";
-import { json, useLoaderData } from "react-router-dom";
+import React, { createContext, useContext, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProviders";
+
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 const AddToys = () => {
   const checkOuts = useLoaderData();
   const {user}= useContext(AuthContext)
-//   console.log(checkOuts);
+  console.log(checkOuts);
+ 
 
-  const bookingServices = event =>{
+
+
+
+
+
+
+  const addProducts = event =>{
     event.preventDefault()
     const form = event.target;
     const name= form.name.value;
     const email= form.email.value;
-    const date = form.date.value
-    const booking ={
-        costumerName: name,
-        email,
-        date,
-       
-        img: checkOuts.img,
-        service: checkOuts.title,
-        price: checkOuts.price,
-        services_id: checkOuts._id,
+    const date = form.date.value;
+    const category = form.category.value;
+    const toy_name = form.toy_name.value;
+    const quantity = form.quantity.valuee;
+    const discription = form.discription.value;
+    const price = form.price.value;
+   
+    const formData ={name, email, date, price, category, toy_name, discription, quantity }
+    console.log(formData)
 
-    }
-    fetch('https://car-doctor-server-shamim-dm.vercel.app/booking', {
+
+    // const booking ={
+    //     costumerName: name,
+    //     email,
+    //     date,
+       
+    //     // img: checkOuts.img,
+    //     service: checkOuts.title,
+    //     price: checkOuts.price,
+    //     services_id: checkOuts._id,
+
+    // }
+    fetch('http://localhost:5000/addProducts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(booking)
+      body: JSON.stringify(formData)
     })
     .then(res => res.json())
     .then(data => {
       console.log(data)
       if(data.insertedId){
-        alert('booking successfull')
+        toast.success('Successfully toasted!')
       }
     })
 
-    console.log(booking)
+  
 
   }
   return (
-   <div className="w-11/12 mx-auto">
-    <h2 className="text-4xl text-red-800 font-bold text-center py-5">Book your Services for <br /><span className="text-sky-800">{checkOuts.title}</span></h2>
 
-     <form onSubmit={bookingServices}>
+
+
+
+
+   <div className="w-11/12 mb-6 mx-auto">
+    <h2 className="text-4xl text-red-800 font-bold text-center  pt-5">Add Your Toys Products <br /><span className="text-sky-800"></span></h2>
+<hr className="mb-8 mt-2"/>
+     <form onSubmit={addProducts}>
       <div className="grid grid-cols-2 gap-7">
         <div className="form-control">
           <label className="label">
@@ -58,10 +83,25 @@ const AddToys = () => {
           <input
             type="text"
             name="name"
-           defaultValue={user?.displayName}
+          //  defaultValue={user?.displayName}
             className="input input-bordered"
           />
         </div>
+
+         <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+           
+        //  defaultValue={user?.email}
+            className="input input-bordered"
+          />
+        </div>
+        
         <div className="form-control">
           <label className="label">
             <span className="label-text">Date</span>
@@ -75,13 +115,13 @@ const AddToys = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">Toys Name</span>
           </label>
           <input
-            type="email"
-            name="email"
+            type="text"
+            name="toy_name"
            
-         defaultValue={user?.email}
+        //  defaultValue={user?.email}
             className="input input-bordered"
           />
         </div>
@@ -92,12 +132,54 @@ const AddToys = () => {
           <input
             type="text"
             name="price"
-            defaultValue={'$' + checkOuts.price}
+            // defaultValue={'$' + checkOuts.price}
             className="input input-bordered"
           />
         </div>
-       
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Quantity</span>
+          </label>
+          <input
+            type="text"
+            name="quantity"
+           
+        //  defaultValue={user?.email}
+            className="input input-bordered"
+          />
+        </div>   
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Category</span>
+          </label>
+          <input
+            type="text"
+            name="category"
+           
+        //  defaultValue={user?.email}
+            className="input input-bordered"
+          />
+        </div>  
+
+
+
       </div>
+
+      <div className="form-control">
+          <label className="label">
+            <span className="label-text">Discription</span>
+          </label>
+          <input
+            type="text"
+            name="discription"
+           
+        //  defaultValue={user?.email}
+            className="input input-bordered py-11"
+          />
+        </div>  
+
       <div className="form-control mt-6">
         <input type="submit" value="Book Now" className="btn btn-block bg-sky-700" />
       </div>
@@ -107,63 +189,6 @@ const AddToys = () => {
 };
 
 export default AddToys;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

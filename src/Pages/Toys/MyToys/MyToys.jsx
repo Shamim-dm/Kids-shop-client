@@ -1,8 +1,26 @@
 import React from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import MyToyuUdate from "./MyToyuUdate";
 
 
 const MyToys = () => {
+  const toysData = useLoaderData()
+
+
+
+  const updateHandler = id =>{
+    console.log(id)
+
+  }
+
+
+
+
+
+
+
+
+  console.log(toysData)
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -13,15 +31,29 @@ const MyToys = () => {
               <th>
                 
               </th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>TOYS INFO</th>
+              <th>SELLER INFO</th>
+              <th>CATEGORY</th>
               <th></th>
             </tr>
           </thead>
-          <MyToyuUdate></MyToyuUdate>
+          {
+            toysData.map(toy => <MyToyuUdate 
+              toy={toy} 
+              key={toy._id}
+              updateHandler={updateHandler}
+              
+
+               ></MyToyuUdate> )
+          }
+          
         </table>
       </div>
+
+
+
+
+
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />
       <div className="modal">
