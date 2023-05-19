@@ -6,6 +6,7 @@ import ToyCollections from "./Home/ToyCollections/ToyCollections";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import HappiClints from "./Home/HappyClints/HappiClints";
+import ChoiseShop from "./Home/ChoiseShop/ChoiseShop";
 
 const Home = () => {
   const toyes = useLoaderData();
@@ -92,9 +93,11 @@ const Home = () => {
               <ToyCollections toy={toy} key={toy._id}></ToyCollections>
             ))}
           </div>
+          
         </TabPanel>
       </Tabs>
-
+      
+      <ChoiseShop></ChoiseShop>
       <HappiClints></HappiClints>
     </div>
   );

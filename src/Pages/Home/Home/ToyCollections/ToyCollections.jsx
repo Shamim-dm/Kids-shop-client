@@ -3,13 +3,16 @@ import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 const ToyCollections = ({ toy }) => {
   const { _Id, toy_name, price, image, rating } = toy;
 //   console.log(toy);
 
   return (
-    <div className=" mx-auto my-8 space-y-3">
+    <div data-aos="fade-right" className="  mx-auto my-8 space-y-3">
       <div>
         <img className="w-48 h-52" src={image} alt="" />
       </div>
