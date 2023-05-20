@@ -13,10 +13,22 @@ import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
   const toyes = useLoaderData();
-  console.log(toyes);
+  // console.log(toyes);
 useTitle("")
   const [toys, setToys] = useState([]);
   const [product, setProduct] = useState([]);
+
+
+const toyDetails = id =>{
+  console.log(id)
+}
+
+
+
+
+
+
+
 
   const populerHandleTabs = (toyes) => {
     setToys(toyes);
@@ -63,7 +75,7 @@ useTitle("")
       </div>
       <Marquee speed={100} className="flex gap-11">
         {toyes.map(toy => (
-          <ToyGallery toy={toy} key={toy._id}></ToyGallery>
+          <ToyGallery toy={toy} key={toy._id} ></ToyGallery>
         ))}
       </Marquee>
 
@@ -89,7 +101,7 @@ useTitle("")
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
             {toys.map((toy) => (
-              <ToyCollections toy={toy} key={toy._id}></ToyCollections>
+              <ToyCollections toy={toy} key={toy._id} toyDetails={toyDetails} ></ToyCollections>
             ))}
           </div>
         </TabPanel>
@@ -97,7 +109,7 @@ useTitle("")
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
             {toys.map((toy) => (
-              <ToyCollections toy={toy} key={toy._id}></ToyCollections>
+              <ToyCollections toy={toy} key={toy._id} toyDetails={toyDetails}></ToyCollections>
             ))}
           </div>
         </TabPanel>
@@ -105,7 +117,7 @@ useTitle("")
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
             {toys.map((toy) => (
-              <ToyCollections toy={toy} key={toy._id}></ToyCollections>
+              <ToyCollections toy={toy} key={toy._id} toyDetails={toyDetails}></ToyCollections>
             ))}
           </div>
         </TabPanel>
@@ -113,7 +125,7 @@ useTitle("")
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
             {toys.map((toy) => (
-              <ToyCollections toy={toy} key={toy._id}></ToyCollections>
+              <ToyCollections toy={toy} key={toy._id} toyDetails={toyDetails} ></ToyCollections>
             ))}
            
           </div>
@@ -122,30 +134,39 @@ useTitle("")
         <TabPanel>
           <div className="my-11 grid sm:grid-cols-2 lg:grid-cols-3 justify-center gap-5">
             {toys.map((toy) => (
-              <ToyCollections toy={toy} key={toy._id}></ToyCollections>
+              <ToyCollections toy={toy} key={toy._id} toyDetails={toyDetails} ></ToyCollections>
             ))}
           </div>
 
 
-{/* Put this part before </body> tag */}
-<input type="checkbox" id="my-modal-5" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box w-11/12 max-w-5xl">
-    <h3 className="font-bold text-lg">{toys._id}</h3>
-    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-    <div className="modal-action">
-      <label htmlFor="my-modal-5" className="btn">Yay!</label>
-    </div>
-  </div>
-</div>
+
 
 
 
         </TabPanel>
       </Tabs>
 
+
+
+
+
+
+
+
       <ChoiseShop></ChoiseShop>
       <HappiClints></HappiClints>
+
+
+
+
+
+{/* Put this part before </body> tag */}
+
+
+
+
+
+
     </div>
   );
 };

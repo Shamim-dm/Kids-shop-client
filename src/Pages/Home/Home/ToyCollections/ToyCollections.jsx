@@ -8,7 +8,7 @@ import 'aos/dist/aos.css';
 
 AOS.init();
 
-const ToyCollections = ({ toy }) => {
+const ToyCollections = ({ toy, toyDetails }) => {
   const { _id, toy_name, price, image, rating } = toy;
 
 const handleDetails = id =>{
@@ -37,8 +37,8 @@ const handleDetails = id =>{
         </p>
 
        
-       <Link to={`ToyDetails/${_id}`} > <button  className="btn  absolute bottom-0 ">View Details</button></Link>
-     
+       <Link to={`/ToyDetails/${_id}`} > <button  className="btn  absolute bottom-0 ">View Details</button></Link>
+       {/* <button htmlFor="my-modal-5" onClick={()=>toyDetails(_id)}  className="btn  absolute bottom-0 ">View Details</button> */}
      
 
       </div>

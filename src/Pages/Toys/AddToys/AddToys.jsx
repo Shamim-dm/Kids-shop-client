@@ -1,16 +1,19 @@
 /* eslint-disable no-unused-vars */
 
 import React, { createContext, useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProviders";
 import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
 import useTitle from "../../../hooks/useTitle";
 
 const AddToys = () => {
-  const checkOuts = useLoaderData();
+  const checkOuts = useLoaderData()
+  const navigate = useNavigate()
   const { user } = useContext(AuthContext);
-  useTitle("AddToys")
+  useTitle("AddToys");
+
+  
   console.log(checkOuts);
 
   const addProducts = (event) => {
@@ -60,6 +63,9 @@ const AddToys = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+
+        
+
         if (data.insertedId) {
           Swal.fire({
             position: "top-center",
@@ -94,12 +100,14 @@ const AddToys = () => {
             <input
               type="text"
               name="name"
-              //  defaultValue={user?.displayName}
+               defaultValue={user?.displayName}
               className="input input-bordered"
             />
           </div>
 
-          <div
+          {
+            user &&
+            <div
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
             className="form-control"
@@ -111,10 +119,11 @@ const AddToys = () => {
               type="email"
               name="email"
               required
-              //  defaultValue={user?.email}
+               value={user?.email}
               className="input input-bordered"
             />
           </div>
+          }
 
           <div
             data-aos="fade-up"
@@ -179,7 +188,7 @@ const AddToys = () => {
             />
           </div>
 
-          <div
+          {/* <div
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
             className="form-control"
@@ -193,6 +202,22 @@ const AddToys = () => {
               //  defaultValue={user?.email}
               className="input input-bordered"
             />
+          </div> */}
+
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <select name="category" className="select select-bordered w-full ">
+              <option disabled selected>
+                Category
+              </option>
+              <option value="cars">Cars</option>
+              <option value="bus">Bus</option>
+              <option value="helicopter">Helicopter</option>
+              <option value="trucks">Trucks</option>
+            </select>
           </div>
 
           <div

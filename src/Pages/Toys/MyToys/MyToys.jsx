@@ -1,20 +1,46 @@
 import React from "react";
 import { useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import {  useLoaderData, useNavigate, useParams } from "react-router-dom";
 import MyToyuUdate from "./MyToyuUdate";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useTitle from "../../../hooks/useTitle";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProviders";
+import { useEffect } from "react";
 AOS.init();
 
 const MyToys = () => {
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate()
+  console.log(user)
   const toysData = useLoaderData();
-  const [toys, setToys] = useState(toysData);
+  const [toys, setToys] = useState([]);
   useTitle("myToys")
-const [toyId, setToyId] = useState([])
-console.log(toyId);
+
+
+// const filters = toysData.filter(data => data?.email === user?.email)
+// setToys(filters)
+// console.log(filters)
+
+const url = (`http://localhost:5000/addProducts?email=${user?.email}`)
+
+useEffect(()=>{
+  fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    if (!data.error) {  
+      setToys(data)
+    } else {
+      navigate("/myToys");
+    }
+  })
+},[])
+
+
+
   const updateHandler = (id) => {
-    setToyId(id)
+
     
   }
 

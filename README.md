@@ -15,6 +15,9 @@ Github Clint Repo -> [KidZone](https://github.com/programming-hero-web-course-4/
 ## Layout=> Daisy UI
 Documentation Link -> [ link](https://daisyui.com/)
 
+## Animation=> AOS
+Documentation Link -> [ link](https://michalsnik.github.io/aos/)
+
 ## Resources 
 * Title Text => [Tailwind CSS](https://tailwindcss.com/)
 

@@ -8,6 +8,7 @@ import useTitle from "../../../hooks/useTitle";
 const Login = () => {
   const { signIn, googleLogin, githubLogin } = useContext(AuthContext) || "";
   const [error, setError] = useState("");
+  
   useTitle("login")
 
   const navigate = useNavigate();

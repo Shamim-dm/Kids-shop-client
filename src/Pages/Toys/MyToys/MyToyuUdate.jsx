@@ -47,7 +47,7 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
           .then((data) => {
             console.log(data);
 
-            if (data.deletedCount > 0) {     
+            if (data.deletedCount > 0) {
               const remaing = toys.filter((cof) => cof._id !== _id);
               setToys(remaing);
             }
@@ -58,12 +58,18 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
   };
 
   return (
-    
-      
-      <tr>
-        <th></th>
-        <td>
-          <div className="flex items-center space-x-3">
+    <tr>
+      <th></th>
+      <td>
+        <div className="flex items-center space-x-3">
+          <div className="avater grid grid-cols-2 gap-3 items-center">
+            <div className="">
+
+              <img className="w-24 h-24 border-2"
+                src=""
+                alt="img"
+              />
+            </div>
             <div>
               <div className="font-bold">{toy_name}</div>
               <div className="text-sm opacity-80">Price: ${price}</div>
@@ -71,48 +77,47 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
 
               <p className="text-sky-500 font-bold">
                 Rating: {rating}
-                <Rating style={{ maxWidth: 100 }} value={rating} readOnly />{" "}
-                
+                <Rating
+                  style={{ maxWidth: 100 }}
+                  value={rating}
+                  readOnly
+                />{" "}
               </p>
             </div>
           </div>
-        </td>
-        <td>
-          <h4>Name: {name}</h4>
+        </div>
+      </td>
+      <td>
+        <h4>Name: {name}</h4>
 
-          <span className="badge badge-ghost badge-sm">Email: {email}</span>
-          <br />
-          <span className="badge badge-ghost badge-sm">Date: {date}</span>
-        </td>
-        <td>{category}</td>
-        <th className="flex items-center gap-2">
-          <label
-            onClick={() => updateHandler(_id)}
-            htmlFor="my-modal-5"
-            className="btn  bg-sky-600 btn-xs"
-          >
-            Edit
-          </label>
-          {/* 
+        <span className="badge badge-ghost badge-sm">Email: {email}</span>
+        <br />
+        <span className="badge badge-ghost badge-sm">Date: {date}</span>
+      </td>
+      <td>{category}</td>
+      <th className="flex items-center gap-2">
+        {/* <label
+          onClick={() => updateHandler(_id)}
+          htmlFor="my-modal-5"
+          className="btn  bg-sky-600 btn-xs"
+        >
+          Edit
+        </label> */}
+        {/* 
           <button  className="btn  bg-sky-600 btn-xs">
             Edit
           </button> */}
 
+        <Link to={`/updateToys/${_id}`}>
+          <button className="btn  bg-sky-600 btn-xs">Edit</button>
+        </Link>
 
-          
-          <Link to={`/updateToys/${_id}`}>
-          <button  className="btn  bg-sky-600 btn-xs">
-            Edit
-          </button>
-          </Link>
-
-          <TrashIcon
-            onClick={() => handledelete(_id)}
-            className="h-6 w-6 text-red-500"
-          />
-        </th>
-      </tr>
-   
+        <TrashIcon
+          onClick={() => handledelete(_id)}
+          className="h-6 w-6 text-red-500"
+        />
+      </th>
+    </tr>
   );
 };
 

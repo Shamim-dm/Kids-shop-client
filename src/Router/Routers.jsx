@@ -11,6 +11,7 @@ import AddToys from "../Pages/Toys/AddToys/AddToys";
 import AllToys from "../Pages/Toys/AllToys/AllToys";
 import MyToys from "../Pages/Toys/MyToys/MyToys";
 import UpdateToys from "../Pages/Toys/MyToys/UpdateToys";
+import PrivateRouters from "./PrivateRouters";
 
 const router = createBrowserRouter([
   {
@@ -37,30 +38,31 @@ const router = createBrowserRouter([
       },
       {
         path: "addToys",
-        element: <AddToys></AddToys>,
+        element: <PrivateRouters><AddToys></AddToys></PrivateRouters>,
         loader: () => fetch("http://localhost:5000/addProducts"),
       },
       {
         path: "allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("http://localhost:5000/addProducts"),
       },
       {
         path: "myToys",
-        element: <MyToys></MyToys>,
+        element: <PrivateRouters><MyToys></MyToys></PrivateRouters>,
         loader: () => fetch("http://localhost:5000/addProducts"),
       },
 
-      {
-        path: "myToys/:id",
-        element: <MyToys></MyToys>,
-        loader: ({params}) => fetch(`http://localhost:5000/addProducts/${params.id}`)
-      },
+      // {
+      //   path: "myToys/:id",
+      //   element: <MyToys></MyToys>,
+      //   loader: ({params}) => fetch(`http://localhost:5000/addProducts/${params.id}`)
+      // },
       
       {
-        path: "ToyDetails",
+        path: "ToyDetails/:_id",
         element: <ToyDetails></ToyDetails>,
-        // loader: ()=> fetch('https://toy-vehicles-server.vercel.app/products')
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params._id}`)
+        
       },
       {
         path: "updateToys/:id",
