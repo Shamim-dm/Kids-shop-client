@@ -70,12 +70,12 @@ const Navbar = () => {
             </ul>
           </div>
           <img
-            className="w-16 h-12 mr-2"
-            src="https://w7.pngwing.com/pngs/425/792/png-transparent-model-car-toy-toys-child-photography-truck-thumbnail.png"
+            className=" h-14 mr-2"
+            src="https://i.ibb.co/mXpbrCL/toys-logo-vector-template-bear-260nw-1019682181.webp"
             alt=""
           />
       
-          <h2 className="text-xl md:text-3xl font-bold">KidZone</h2>
+          <h2 className="text-xl md:text-3xl font-bold "><span className="text-red-800">Kids</span><span className="text-sky-800">Toys</span></h2>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1">

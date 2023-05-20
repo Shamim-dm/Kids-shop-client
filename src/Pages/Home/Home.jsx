@@ -9,11 +9,12 @@ import HappiClints from "./Home/HappyClints/HappiClints";
 import ChoiseShop from "./Home/ChoiseShop/ChoiseShop";
 import ToyGallery from "./Home/ToyGallery/ToyGallery";
 import Marquee from "react-fast-marquee";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
   const toyes = useLoaderData();
   console.log(toyes);
-
+useTitle("")
   const [toys, setToys] = useState([]);
   const [product, setProduct] = useState([]);
 
@@ -61,7 +62,7 @@ const Home = () => {
         <hr />
       </div>
       <Marquee speed={100} className="flex gap-11">
-        {toyes.map((toy) => (
+        {toyes.map(toy => (
           <ToyGallery toy={toy} key={toy._id}></ToyGallery>
         ))}
       </Marquee>

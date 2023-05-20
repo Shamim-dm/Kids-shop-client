@@ -3,12 +3,14 @@ import { useLoaderData } from "react-router-dom";
 import SingleToy from "./SingleToy";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../../hooks/useTitle";
 
 
 
 const AllToys = () => {
   const allToys = useLoaderData();
   const [products, setProducts] = useState([]);
+  useTitle("AllToys")
 
   const {
     _id,

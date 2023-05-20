@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const ErrorPage = () => {
     const { error, status } = useRouteError()
+    useTitle("errorPage")
     return (
         <section className='flex items-center h-screen p-16  text-purple-900 mt-12'>
       <div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
         <div className='rounded-lg'>
-          <img className='rounded-full w-[60%] mx-auto' src='https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000' alt="" />
+          <img className='rounded-full w-[60%] mx-auto' src='https://i.ibb.co/Qkf7xSc/psd-404-page-not-found-error-3d-rendering-icon-illustration-free-vector.jpg' alt="" />
         </div>
         <div className='max-w-md text-center'>
           <h2 className='mb-8 font-extrabold text-9xl text-purple-600'>
-            <span className='sr-only'>Error </span> 
+            <span className='sr-only'>Error  </span> 
           </h2>
-          <p className='text-2xl font-semibold md:text-3xl mb-8'>
-            You are at wrong place!!!
+          <p className='text-2xl text-red-500 font-bold md:text-5xl mb-8'>
+            Page Not found!!!
           </p>
           <Link
             to='/'

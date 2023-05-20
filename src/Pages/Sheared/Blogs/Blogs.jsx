@@ -1,9 +1,11 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import useTitle from "../../../hooks/useTitle";
 AOS.init();
 
 const Blogs = () => {
+  useTitle("Blogs")
   return (
     <div>
       <h2 className="text-4xl font-bold text-center text-sky-400 mb-12">

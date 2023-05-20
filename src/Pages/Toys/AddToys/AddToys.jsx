@@ -3,197 +3,249 @@
 import React, { createContext, useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProviders";
-
-import toast, { Toaster } from 'react-hot-toast';
-
-
+import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
+import useTitle from "../../../hooks/useTitle";
 
 const AddToys = () => {
   const checkOuts = useLoaderData();
-  const {user}= useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  useTitle("AddToys")
   console.log(checkOuts);
- 
 
-
-
-
-
-
-
-  const addProducts = event =>{
-    event.preventDefault()
+  const addProducts = (event) => {
+    event.preventDefault();
     const form = event.target;
-    const name= form.name.value;
-    const email= form.email.value;
+    const name = form.name.value;
+    const email = form.email.value;
     const date = form.date.value;
     const category = form.category.value;
     const toy_name = form.toy_name.value;
     const quantity = form.quantity.valuee;
     const discription = form.discription.value;
     const price = form.price.value;
-   
-    const formData ={name, email, date, price, category, toy_name, discription, quantity }
-    console.log(formData)
+    const rating = form.rating.value;
 
+    const formData = {
+      name,
+      email,
+      date,
+      price,
+      category,
+      toy_name,
+      discription,
+      quantity,
+      rating,
+    };
+    console.log(formData);
 
     // const booking ={
     //     costumerName: name,
     //     email,
     //     date,
-       
+
     //     // img: checkOuts.img,
     //     service: checkOuts.title,
     //     price: checkOuts.price,
     //     services_id: checkOuts._id,
 
     // }
-    fetch('http://localhost:5000/addProducts', {
-      method: 'POST',
+    fetch("http://localhost:5000/addProducts", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.insertedId){
-        toast.success('Successfully toasted!')
-      }
-    })
-
-  
-
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your Toys information is added! ",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   return (
+    <div className="w-11/12 mb-6 mx-auto">
+      <h2 className="text-4xl text-red-800 font-bold text-center  pt-5">
+        Add Your Toys Products <br />
+        <span className="text-sky-800"></span>
+      </h2>
+      <hr className="mb-8 mt-2" />
+      <form onSubmit={addProducts}>
+        <div
+          className="grid 
+      md:grid-cols-2 gap-7"
+        >
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              //  defaultValue={user?.displayName}
+              className="input input-bordered"
+            />
+          </div>
 
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              //  defaultValue={user?.email}
+              className="input input-bordered"
+            />
+          </div>
 
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Date</span>
+            </label>
+            <input
+              type="date"
+              name="date"
+              placeholder="date"
+              className="input input-bordered"
+            />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Toys Name</span>
+            </label>
+            <input
+              type="text"
+              name="toy_name"
+              required
+              //  defaultValue={user?.email}
+              className="input input-bordered"
+            />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Price</span>
+            </label>
+            <input
+              type="number"
+              name="price"
+              // defaultValue={'$' + checkOuts.price}
+              className="input input-bordered"
+            />
+          </div>
 
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Quantity</span>
+            </label>
+            <input
+              type="number"
+              name="quantity"
+              //  defaultValue={user?.email}
+              className="input input-bordered"
+            />
+          </div>
 
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Category</span>
+            </label>
+            <input
+              type="text"
+              name="category"
+              //  defaultValue={user?.email}
+              className="input input-bordered"
+            />
+          </div>
 
-   <div className="w-11/12 mb-6 mx-auto">
-    <h2 className="text-4xl text-red-800 font-bold text-center  pt-5">Add Your Toys Products <br /><span className="text-sky-800"></span></h2>
-<hr className="mb-8 mt-2"/>
-     <form onSubmit={addProducts}>
-      <div className="grid grid-cols-2 gap-7">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-          //  defaultValue={user?.displayName}
-            className="input input-bordered"
-          />
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Rating</span>
+            </label>
+            <input
+              type="number"
+              name="rating"
+              value="4.5"
+              //  defaultValue={user?.email}
+              className="input input-bordered"
+            />
+          </div>
         </div>
 
-         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            required
-           
-        //  defaultValue={user?.email}
-            className="input input-bordered"
-          />
-        </div>
-        
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Date</span>
-          </label>
-          <input
-            type="date"
-            name="date"
-            placeholder="date"
-            className="input input-bordered"
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Toys Name</span>
-          </label>
-          <input
-            type="text"
-            name="toy_name"
-           
-        //  defaultValue={user?.email}
-            className="input input-bordered"
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Price</span>
-          </label>
-          <input
-            type="text"
-            name="price"
-            // defaultValue={'$' + checkOuts.price}
-            className="input input-bordered"
-          />
-        </div>
-
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Quantity</span>
-          </label>
-          <input
-            type="text"
-            name="quantity"
-           
-        //  defaultValue={user?.email}
-            className="input input-bordered"
-          />
-        </div>   
-
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Category</span>
-          </label>
-          <input
-            type="text"
-            name="category"
-           
-        //  defaultValue={user?.email}
-            className="input input-bordered"
-          />
-        </div>  
-
-
-
-      </div>
-
-      <div className="form-control">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="bottom-bottom"
+          className="form-control"
+        >
           <label className="label">
             <span className="label-text">Discription</span>
           </label>
           <input
             type="text"
             name="discription"
-           
-        //  defaultValue={user?.email}
+            //  defaultValue={user?.email}
             className="input input-bordered py-11"
           />
-        </div>  
+        </div>
 
-      <div className="form-control mt-6">
-        <input type="submit" value="Book Now" className="btn btn-block bg-sky-700" />
-      </div>
-    </form>
-   </div>
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="bottom-bottom"
+          className="form-control mt-6"
+        >
+          <input
+            type="submit"
+            value="Add Toys"
+            className="btn btn-block bg-sky-700"
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 
 export default AddToys;
-
-
-
-
-
 
 // import { useForm } from "react-hook-form";
 // import React, { useState } from "react";

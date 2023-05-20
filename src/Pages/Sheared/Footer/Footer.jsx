@@ -12,9 +12,7 @@ const Footer = () => {
           />
 
           <a className=" font-bold normal-case text-xl  md:text-3xl">
-            T<span className="text-red-500">oy</span>s{" "}
-            <span className="text-sky-600">Veh</span>ic
-            <span className="text-red-800">les</span>
+          <h2 className="text-xl md:text-3xl font-bold "><span className="text-red-800">Kids</span><span className="text-sky-800">Toys</span></h2>
           </a>
         </div>
 

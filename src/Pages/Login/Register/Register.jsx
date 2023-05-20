@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProviders";
 import toast from 'react-hot-toast';
+import useTitle from "../../../hooks/useTitle";
 
 
 
@@ -12,7 +13,7 @@ import toast from 'react-hot-toast';
 const Register = () => {
   const { createUser, googleLogin, githubLogin  } = useContext(AuthContext) || "";
   const [errors, setErrors] = useState("");
-  
+  useTitle("Register")
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
