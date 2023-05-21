@@ -8,12 +8,11 @@ import toast, { Toaster } from "react-hot-toast";
 import useTitle from "../../../hooks/useTitle";
 
 const AddToys = () => {
-  const checkOuts = useLoaderData()
-  const navigate = useNavigate()
+  const checkOuts = useLoaderData();
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   useTitle("AddToys");
 
-  
   console.log(checkOuts);
 
   const addProducts = (event) => {
@@ -23,22 +22,27 @@ const AddToys = () => {
     const email = form.email.value;
     const date = form.date.value;
     const category = form.category.value;
-    const toy_name = form.toy_name.value;
+    const title = form.title.value;
     const quantity = form.quantity.valuee;
-    const discription = form.discription.value;
+    const discription = form.discriptions.value;
     const price = form.price.value;
+    const image = form.image.value;
     const rating = form.rating.value;
+    const discriptions = form.discriptions.value;
 
     const formData = {
       name,
+      image,
       email,
       date,
       price,
       category,
-      toy_name,
+      title,
       discription,
       quantity,
       rating,
+      discriptions,
+   
     };
     console.log(formData);
 
@@ -53,7 +57,7 @@ const AddToys = () => {
     //     services_id: checkOuts._id,
 
     // }
-    fetch("http://localhost:5000/addProducts", {
+    fetch("https://toy-vehicles-server-shamim-dm.vercel.app/addProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,8 +67,6 @@ const AddToys = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-
-        
 
         if (data.insertedId) {
           Swal.fire({
@@ -95,35 +97,35 @@ const AddToys = () => {
             className="form-control"
           >
             <label className="label">
-              <span className="label-text">Name</span>
+              <span className="label-text">Seller Name</span>
             </label>
             <input
               type="text"
               name="name"
-               defaultValue={user?.displayName}
+              
+              defaultValue={user?.displayName}
               className="input input-bordered"
             />
           </div>
 
-          {
-            user &&
+          {user && (
             <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
-            className="form-control"
-          >
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              required
-               value={user?.email}
-              className="input input-bordered"
-            />
-          </div>
-          }
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+              className="form-control"
+            >
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={user?.email}
+                className="input input-bordered"
+              />
+            </div>
+          )}
 
           <div
             data-aos="fade-up"
@@ -137,6 +139,7 @@ const AddToys = () => {
               type="date"
               name="date"
               placeholder="date"
+              required
               className="input input-bordered"
             />
           </div>
@@ -150,12 +153,32 @@ const AddToys = () => {
             </label>
             <input
               type="text"
-              name="toy_name"
+              name="title"
               required
+              placeholder="Toy Name"
               //  defaultValue={user?.email}
               className="input input-bordered"
             />
           </div>
+
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            className="form-control"
+          >
+            <label className="label">
+              <span className="label-text">Toys Image</span>
+            </label>
+            <input
+              type="text"
+              name="image"
+              required
+              placeholder="Image URL"
+              //  defaultValue={user?.email}
+              className="input input-bordered"
+            />
+          </div>
+
           <div
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
@@ -167,6 +190,8 @@ const AddToys = () => {
             <input
               type="number"
               name="price"
+              required
+              placeholder="Price"
               // defaultValue={'$' + checkOuts.price}
               className="input input-bordered"
             />
@@ -183,6 +208,8 @@ const AddToys = () => {
             <input
               type="number"
               name="quantity"
+              required
+              placeholder="Quantity"
               //  defaultValue={user?.email}
               className="input input-bordered"
             />
@@ -209,10 +236,11 @@ const AddToys = () => {
             data-aos-anchor-placement="bottom-bottom"
             className="form-control"
           >
+            <label className="label">
+              <span className="label-text">Category</span>
+            </label>
             <select name="category" className="select select-bordered w-full ">
-              <option disabled selected>
-                Category
-              </option>
+             
               <option value="cars">Cars</option>
               <option value="bus">Bus</option>
               <option value="helicopter">Helicopter</option>
@@ -237,6 +265,7 @@ const AddToys = () => {
             />
           </div>
         </div>
+     
 
         <div
           data-aos="fade-up"
@@ -246,12 +275,18 @@ const AddToys = () => {
           <label className="label">
             <span className="label-text">Discription</span>
           </label>
-          <input
+          <textarea
             type="text"
-            name="discription"
+            name="discriptions"
             //  defaultValue={user?.email}
-            className="input input-bordered py-11"
-          />
+            className="input input-bordered  "
+          >
+          
+          Plastic Battery Operated 
+            Rechargeable Batteries  1 Battteries  Width x
+            Height: 10 cm x 12  cm  Age: 3+ Years 
+          
+          </textarea>
         </div>
 
         <div

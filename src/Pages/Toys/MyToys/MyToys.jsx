@@ -12,77 +12,79 @@ AOS.init();
 
 const MyToys = () => {
   const {user} = useContext(AuthContext)
-  const navigate = useNavigate()
-  console.log(user)
+useNavigate()
   const toysData = useLoaderData();
+  console.log(toysData)
   const [toys, setToys] = useState([]);
+  console.log(toys)
   useTitle("myToys")
 
 
-// const filters = toysData.filter(data => data?.email === user?.email)
-// setToys(filters)
-// console.log(filters)
 
-const url = (`http://localhost:5000/addProducts?email=${user?.email}`)
+
+const url = (`https://toy-vehicles-server-shamim-dm.vercel.app/toys/${user?.email}`)
 
 useEffect(()=>{
   fetch(url)
   .then(res => res.json())
   .then(data => {
-    if (!data.error) {  
-      setToys(data)
-    } else {
-      navigate("/myToys");
-    }
+    console.log(data)
+    setToys(data)
+  
   })
-},[])
+},[user?.email])
 
 
 
-  const updateHandler = (id) => {
+ 
 
-    
-  }
 
-  const addProducts = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const date = form.date.value;
-    const category = form.category.value;
-    const toy_name = form.toy_name.value;
-    const quantity = form.quantity.valuee;
-    const discription = form.discription.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
 
-    const formData = {
-      name,
-      email,
-      date,
-      price,
-      category,
-      toy_name,
-      discription,
-      quantity,
-      rating,
-    };
+const sortEmail = toysData.filter(pd => pd.email == user.email)
+console.log(sortEmail)
 
-    fetch(`http://localhost:5000/addProducts/${toyId}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+
+
+
+  // const addProducts = (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const name = form.name.value;
+  //   const email = form.email.value;
+  //   const date = form.date.value;
+  //   const category = form.category.value;
+  //   const toy_name = form.toy_name.value;
+  //   const quantity = form.quantity.valuee;
+  //   const discription = form.discription.value;
+  //   const price = form.price.value;
+  //   const rating = form.rating.value;
+
+  //   const formData = {
+  //     name,
+  //     email,
+  //     date,
+  //     price,
+  //     category,
+  //     toy_name,
+  //     discription,
+  //     quantity,
+  //     rating,
+  //   };
+
+  //   fetch(`http://localhost:5000/addProducts/${toyId}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
 
   
-  };
+  // };
 
 
   return (
@@ -109,7 +111,7 @@ useEffect(()=>{
               <MyToyuUdate
                 toy={toy}
                 key={toy._id}
-                updateHandler={updateHandler}
+               
                 setToys={setToys}
                 toys={toys}
               ></MyToyuUdate>
@@ -119,7 +121,7 @@ useEffect(()=>{
       </div>
 
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+      {/* <input type="checkbox" id="my-modal-5" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
 
@@ -304,7 +306,7 @@ useEffect(()=>{
             </label>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

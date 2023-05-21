@@ -6,6 +6,10 @@ import { useContext } from "react";
 
 
 const Navbar = () => {
+
+  
+
+
   const { user, logOut } = useContext(AuthContext);
   const handleLogout = () => {
     logOut()
@@ -45,13 +49,17 @@ const Navbar = () => {
                   All Toys
                 </ActiveLink>
               </li>
-              <li>
-                <ActiveLink to="/myToys">My Toys</ActiveLink>
-              </li>
 
-              <li>
-                <ActiveLink to="/addToys">Add Toys</ActiveLink>
-              </li>
+               {user && (
+             <li>
+             <ActiveLink to="/myToys">My Toys</ActiveLink>
+           </li>
+          )}
+            {user && (
+            <li>
+            <ActiveLink to="/addToys">Add Toys</ActiveLink>
+          </li>
+          )}
 
               <li>
                 <ActiveLink to="/blogs">Blogs</ActiveLink>
@@ -85,13 +93,27 @@ const Navbar = () => {
             <li tabIndex={0}>
               <ActiveLink to="/allToys">All Toys</ActiveLink>
             </li>
-            <li>
+            {/* <li>
               <ActiveLink to="/myToys">My Toys</ActiveLink>
             </li>
 
             <li>
               <ActiveLink to="/addToys">Add Toys</ActiveLink>
-            </li>
+            </li> */}
+
+            {user && (
+             <li>
+             <ActiveLink to="/myToys">My Toys</ActiveLink>
+           </li>
+          )}
+            {user && (
+            <li>
+            <ActiveLink to="/addToys">Add Toys</ActiveLink>
+          </li>
+          )}
+
+
+
 
             <li>
               <ActiveLink to="/blogs">Blogs</ActiveLink>
@@ -111,7 +133,7 @@ const Navbar = () => {
           {user && (
             <img
               className="w-12 h-12 c rounded-full"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+              src="https://img.freepik.com/free-icon/user_318-159711.jpg"
             />
           )}
 

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
-const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
+const MyToyuUdate = ({ toy, toys, setToys }) => {
   const {
     _id,
     rating,
@@ -21,6 +21,7 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
     details,
     url,
     date,
+    title
   } = toy;
 
   const handledelete = (id) => {
@@ -40,7 +41,7 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
           "success"
         );
 
-        fetch(`http://localhost:5000/addProducts/${_id}`, {
+        fetch(`https://toy-vehicles-server-shamim-dm.vercel.app/addProducts/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -64,14 +65,19 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
         <div className="flex items-center space-x-3">
           <div className="avater grid grid-cols-2 gap-3 items-center">
             <div className="">
+              {/* <img className="w-24 h-24 border-2" src={image} alt="img" /> */}
 
-              <img className="w-24 h-24 border-2"
-                src=""
-                alt="img"
-              />
+              {image ? (
+                <img className="w-24 h-24 border-2" src={image} />
+              ) : (
+                <img
+                  className="w-24 h-24 border-2"
+                  src=" https://www.kpbn.co.id/images/berita/no-image-found.jpg "
+                />
+              )}
             </div>
             <div>
-              <div className="font-bold">{toy_name}</div>
+              <div className="font-bold">{title}</div>
               <div className="text-sm opacity-80">Price: ${price}</div>
               <div className="text-sm opacity-80">Quantity: {quantity}</div>
 
@@ -94,7 +100,7 @@ const MyToyuUdate = ({ toy, updateHandler, toys, setToys }) => {
         <br />
         <span className="badge badge-ghost badge-sm">Date: {date}</span>
       </td>
-      <td>{category}</td>
+      <td>{category} </td>
       <th className="flex items-center gap-2">
         {/* <label
           onClick={() => updateHandler(_id)}

@@ -96,6 +96,7 @@ const Register = () => {
                     <input
                       type="email"
                       name="email"
+                      required
                       placeholder="Email"
                       className="input input-bordered  text-black"
                     />

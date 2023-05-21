@@ -4,12 +4,16 @@ import useTitle from "../../../hooks/useTitle";
 import Swal from "sweetalert2";
 const UpdateToys = () => {
   const updateDate = useLoaderData();
+  const data = useParams()
   useTitle("Update_Toys");
+  console.log(updateDate)
+  console.log(data)
  
  
 
   const {
     _id,
+    name,
     oparetor,
     metareal,
     battery_quantity,
@@ -56,7 +60,7 @@ const UpdateToys = () => {
       rating,
     };
 
-    fetch(`http://localhost:5000/addProducts/${_id}`, {
+    fetch(`https://toy-vehicles-server-shamim-dm.vercel.app/addProducts/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -100,7 +104,7 @@ const UpdateToys = () => {
             <input
               type="text"
               name="name"
-              defaultValue={seller_name}
+              defaultValue={name}
               //  defaultValue={user?.displayName}
               className="input input-bordered"
             />
@@ -118,7 +122,7 @@ const UpdateToys = () => {
               type="email"
               name="email"
               required
-              defaultValue={email}
+              value={email}
               //  defaultValue={user?.email}
               className="input input-bordered"
             />
@@ -202,9 +206,7 @@ const UpdateToys = () => {
             className="form-control"
           >
             <select name="category" className="select select-bordered w-full ">
-              <option disabled selected>
-                Category
-              </option>
+              
               <option value="cars">Cars</option>
               <option value="bus">Bus</option>
               <option value="helicopter">Helicopter</option>

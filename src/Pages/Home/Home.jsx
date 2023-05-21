@@ -59,7 +59,7 @@ const toyDetails = id =>{
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://toy-vehicles-server-shamim-dm.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);

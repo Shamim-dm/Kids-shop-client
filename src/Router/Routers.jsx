@@ -8,6 +8,7 @@ import Register from "../Pages/Login/Register/Register";
 import Blogs from "../Pages/Sheared/Blogs/Blogs";
 
 import AddToys from "../Pages/Toys/AddToys/AddToys";
+import AllToyDetails from "../Pages/Toys/AllToys/AllToyDetails";
 import AllToys from "../Pages/Toys/AllToys/AllToys";
 import MyToys from "../Pages/Toys/MyToys/MyToys";
 import UpdateToys from "../Pages/Toys/MyToys/UpdateToys";
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("https://toy-vehicles-server-shamim-dm.vercel.app/products"),
       },
       {
         path: "login",
@@ -39,17 +40,22 @@ const router = createBrowserRouter([
       {
         path: "addToys",
         element: <PrivateRouters><AddToys></AddToys></PrivateRouters>,
-        loader: () => fetch("http://localhost:5000/addProducts"),
+        loader: () => fetch("https://toy-vehicles-server-shamim-dm.vercel.app/addProducts"),
       },
       {
         path: "allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/addProducts"),
+        loader: () => fetch("https://toy-vehicles-server-shamim-dm.vercel.app/addProducts"),
       },
+      {
+      path: "allToysDetails/:_id",
+      element:<AllToyDetails></AllToyDetails>,
+      loader: ({params}) => fetch(`https://toy-vehicles-server-shamim-dm.vercel.app/${params._id}`)
+       },
       {
         path: "myToys",
         element: <PrivateRouters><MyToys></MyToys></PrivateRouters>,
-        loader: () => fetch("http://localhost:5000/addProducts"),
+        loader: () => fetch("https://toy-vehicles-server-shamim-dm.vercel.app/addProducts")
       },
 
       // {
@@ -60,7 +66,7 @@ const router = createBrowserRouter([
       
       {
         path: "ToyDetails/:_id",
-        element: <ToyDetails></ToyDetails>,
+        element: <PrivateRouters><ToyDetails></ToyDetails></PrivateRouters>,
         loader: ({params}) => fetch(`http://localhost:5000/products/${params._id}`)
         
       },

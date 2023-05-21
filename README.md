@@ -4,13 +4,13 @@
 
 ## Website Name > KidZone
 ## Live Link 
-Hosted in Firebase Live link -> [FoodBuzz](https://toy-vehicless.web.app/)
+Hosted in Firebase Live link -> [KidsToys](https://toy-vehicless.web.app/)
 
 ## GitHub
-Github server Repo -> [KidZone](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-Shamim-dm)
+Github server Repo -> [KidsToys](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-Shamim-dm)
 
 ## GitHub
-Github Clint Repo -> [KidZone](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-client-side-Shamim-dm)
+Github Clint Repo -> [KidsToys](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-client-side-Shamim-dm)
 
 ## Layout=> Daisy UI
 Documentation Link -> [ link](https://daisyui.com/)

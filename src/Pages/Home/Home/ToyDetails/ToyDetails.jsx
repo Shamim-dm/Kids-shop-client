@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
@@ -7,10 +7,11 @@ import useTitle from '../../../../hooks/useTitle';
 
 const ToyDetails = () => {
     const data = useLoaderData()
+   
     const toy = useParams()
     console.log(data._id)
     useTitle("toyDetails")
-
+    
     const {
         _id,
         oparetor,
