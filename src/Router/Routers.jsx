@@ -67,13 +67,13 @@ const router = createBrowserRouter([
       {
         path: "ToyDetails/:_id",
         element: <PrivateRouters><ToyDetails></ToyDetails></PrivateRouters>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params._id}`)
+        loader: ({params}) => fetch(`https://toy-vehicles-server-shamim-dm.vercel.app/products/${params._id}`)
         
       },
       {
         path: "updateToys/:id",
         element: <UpdateToys></UpdateToys>,
-        loader: ({params}) => fetch(`http://localhost:5000/addProducts/${params.id}`)
+        loader: ({params}) => fetch(`https://toy-vehicles-server-shamim-dm.vercel.app/addProducts/${params.id}`)
       },
     ],
   },
