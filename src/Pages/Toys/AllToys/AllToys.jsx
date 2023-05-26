@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import SingleToy from "./SingleToy";
 import { Rating } from "@smastrom/react-rating";
@@ -9,6 +9,8 @@ const AllToys = () => {
   const data = useLoaderData();
   const [allToys, setAllToys] = useState(data);
   const [products, setProducts] = useState([]);
+  const [acc, setAcc] = useState([]);
+  const [dcc, setDcc] = useState([]);
   useTitle("AllToys");
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
@@ -44,10 +46,10 @@ const AllToys = () => {
   const toydetails = (_id) => {
     const toyProduct = allToys.filter((toyess) => toyess._id === _id);
     for (const product of toyProduct) {
-      console.log(product);
+     
       setProducts(product);
     }
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   };
 
   // const handleSearch = () => {
@@ -61,7 +63,7 @@ const AllToys = () => {
   //     });
   // };
 
-  console.log(allToys);
+  
   const searchhandler = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -70,7 +72,7 @@ const AllToys = () => {
     const toyname = allToys.filter((pd) => pd.category == searchValue);
 
     for (const pd of toyname) {
-      console.log(pd);
+      
     }
     setAllToys(toyname);
     console.log(toyname);
@@ -78,16 +80,38 @@ const AllToys = () => {
 
 
 
-  // const handleSearch = () => {
-  //   fetch(`https://toy-vehicles-server-shamim-dm.vercel.app/getJobsByText/${searchText}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setAllToys(data);
-  //     });
-  // };
+
+ 
+  const url = 'https://toy-vehicles-server-shamim-dm.vercel.app/assecnding'
+ 
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+     
+        setAcc(data);
+      });
+  }, []);
 
 
+  const urls = 'https://toy-vehicles-server-shamim-dm.vercel.app/deccending'
+ 
+  useEffect(() => {
+    fetch(urls)
+      .then(res => res.json())
+      .then(data => {
+       
+        setDcc(data);
+      });
+  }, []);
+
+  const accending =()=>{
+ setAllToys(acc)
+}
+
+const deccending = ()=>{
+  setAllToys(dcc)
+}
 
 
 
@@ -106,6 +130,8 @@ const AllToys = () => {
         <span className="text-sky-800">{allToys.length}</span>{" "}
       </h4>
 
+<h4 className="text-xl font-bold">Search by only category</h4>
+      <div className="md:flex items-center justify-between" >
       <form onSubmit={searchhandler}>
         <div className="flex items-center gap-2">
           <div
@@ -116,7 +142,7 @@ const AllToys = () => {
             <input
               type="text"
               name="text"
-              placeholder="toy name"
+              placeholder="category"
               className="input input-bordered"
             />
           </div>
@@ -130,6 +156,18 @@ const AllToys = () => {
           </div>
         </div>
       </form>
+
+
+      <div className=" mb-2">
+        <h4 className="text-2xl text-center font-bold mb-1">sort by price</h4>
+        <button onClick={accending} className="btn btn-sm mr-1 ">Accending</button>
+        <button onClick={deccending} className="btn btn-sm">Deccending</button>
+      </div>
+      </div>
+
+
+
+
 
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 my-11">
         {allToys.map((toy) => (

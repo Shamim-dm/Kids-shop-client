@@ -25,17 +25,18 @@ const AddToys = () => {
     const title = form.title.value;
     const quantity = form.quantity.valuee;
     const discription = form.discriptions.value;
-    const price = form.price.value;
+    const price = parseInt(form.price.value);
     const image = form.image.value;
     const rating = form.rating.value;
     const discriptions = form.discriptions.value;
+
 
     const formData = {
       name,
       image,
       email,
       date,
-      price,
+     price,
       category,
       title,
       discription,
@@ -46,23 +47,15 @@ const AddToys = () => {
     };
     console.log(formData);
 
-    // const booking ={
-    //     costumerName: name,
-    //     email,
-    //     date,
-
-    //     // img: checkOuts.img,
-    //     service: checkOuts.title,
-    //     price: checkOuts.price,
-    //     services_id: checkOuts._id,
-
-    // }
+ 
     fetch("https://toy-vehicles-server-shamim-dm.vercel.app/addProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body:JSON.stringify(formData),
+ 
+
     })
       .then((res) => res.json())
       .then((data) => {

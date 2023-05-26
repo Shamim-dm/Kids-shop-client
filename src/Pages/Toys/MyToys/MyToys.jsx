@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {  useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import MyToyuUdate from "./MyToyuUdate";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,80 +11,71 @@ import { useEffect } from "react";
 AOS.init();
 
 const MyToys = () => {
-  const {user} = useContext(AuthContext)
-useNavigate()
+  const { user } = useContext(AuthContext);
+  useNavigate();
   const toysData = useLoaderData();
-  console.log(toysData)
+  console.log(toysData);
   const [toys, setToys] = useState([]);
-  console.log(toys)
-  useTitle("myToys")
+  const [acc, setAcc] = useState([]);
+  const [dcc, setDcc] = useState([]);
+  console.log(toys);
+  useTitle("myToys");
+
+  const url = `https://toy-vehicles-server-shamim-dm.vercel.app/toys/${user?.email}`;
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setToys(data);
+      });
+  }, [user?.email]);
+
+  const sortEmail = toysData.filter((pd) => pd.email == user.email);
+  console.log(sortEmail);
 
 
 
 
-const url = (`https://toy-vehicles-server-shamim-dm.vercel.app/toys/${user?.email}`)
 
-useEffect(()=>{
-  fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    console.log(data)
-    setToys(data)
-  
-  })
-},[user?.email])
+  const accaccurl = `https://toy-vehicles-server-shamim-dm.vercel.app/mytoysacc/${user?.email}`;
 
-
-
- 
+  useEffect(() => {
+    fetch(accaccurl)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAcc(data)
+        // setToys(data);
+      });
+  }, [user?.email]);
 
 
+  const dccurl = `https://toy-vehicles-server-shamim-dm.vercel.app/mytoysdcc/${user?.email}`;
 
-const sortEmail = toysData.filter(pd => pd.email == user.email)
-console.log(sortEmail)
+  useEffect(() => {
+    fetch(dccurl)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setDcc(data)
+        // setToys(data);
+      });
+  }, [user?.email]);
+
+
+  const accending =()=>{
+    setToys(acc)
+   }
+   
+   const deccending = ()=>{
+     setToys(dcc)
+   }
 
 
 
 
-  // const addProducts = (event) => {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const name = form.name.value;
-  //   const email = form.email.value;
-  //   const date = form.date.value;
-  //   const category = form.category.value;
-  //   const toy_name = form.toy_name.value;
-  //   const quantity = form.quantity.valuee;
-  //   const discription = form.discription.value;
-  //   const price = form.price.value;
-  //   const rating = form.rating.value;
-
-  //   const formData = {
-  //     name,
-  //     email,
-  //     date,
-  //     price,
-  //     category,
-  //     toy_name,
-  //     discription,
-  //     quantity,
-  //     rating,
-  //   };
-
-  //   fetch(`http://localhost:5000/addProducts/${toyId}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-
-  
-  // };
 
 
   return (
@@ -93,6 +84,16 @@ console.log(sortEmail)
         Your total Toys items is:{" "}
         <span className="text-sky-800">{toys.length}</span>{" "}
       </h4>
+
+      
+      <div className=" mb-2 text-right">
+        <h4 className="text-2xl mr-5 font-bold mb-1">sort by price</h4>
+        <button onClick={accending} className="btn btn-sm mr-1 ">Accending</button>
+        <button onClick={deccending} className="btn btn-sm">Deccending</button>
+      </div>
+
+    
+
       <div className="overflow-x-auto w-full">
         <table className="table w-full ">
           {/* head */}
@@ -111,7 +112,6 @@ console.log(sortEmail)
               <MyToyuUdate
                 toy={toy}
                 key={toy._id}
-               
                 setToys={setToys}
                 toys={toys}
               ></MyToyuUdate>
